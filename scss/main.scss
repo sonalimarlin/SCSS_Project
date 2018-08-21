@@ -1,4 +1,7 @@
 @import "variables";
+@import "mixins";
+
+@include fancy-links;
 
 body {
   font-family: $text-font;
@@ -9,6 +12,15 @@ h1, h2, h3, h4 {
   font-family: $headline-font;
 }
 
+h1 {
+	@include large-text;
+}
+
+h2 {
+	text-transform: uppercase;
+	color: #333;
+}
+
 p {
   font-family: $text-font;
 }
@@ -17,7 +29,13 @@ a {
 	color: $link-color;
 }
 
+.warning-button {
+  @include warning;
+  padding: 8px 12px;
+}
+
 #header {
+	@include box;
 	height: $header-height;
 	background-color: $theme-color;
 
@@ -29,7 +47,7 @@ a {
 		color: $menu-item-color;
 	}
   }
-  
+
   #logo {
 
   }
@@ -49,4 +67,11 @@ a {
 #footer {
 	background-color: $ternary-color;
 	height: $footer-height;
+}
+img {
+	float: left;
+	padding-right: 20px;
+}
+nav ul li {
+	padding: 10px;
 }
