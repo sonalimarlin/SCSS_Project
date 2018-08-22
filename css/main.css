@@ -1,13 +1,53 @@
+/* Sublime Text with a bunch of setup as follows:
+Package manager plugin packagecontrol.io. view show console, then run code.
+ctrl shift p to check packages installed
+sass, scss, sass build, Emmet plugin
+
+sass is distributed as a ruby gem 
+rubyinstaller.org -> download
+add ruby executables to your path!
+cmd line
+gem install sass
+
+in sublime, create style.scss
+add some styles bgc tab (for emmet) plus nested scss
+ctrl b (tools build)
+pick sass
+
+setup project structure
+sass build plugin mapped to build to css folder
+tools build system -> new build system
+{
+
+  "cmd": ["sass", "--update", "$file:${file_path}/../css/${file_base_name}.css", "--stop-on-error", "--no-cache"],
+
+  "osx":
+  {
+      "path": "/usr/local/bin:$PATH"
+  },
+
+  "windows":
+  {
+      "shell": "true"
+  }
+
+}
+*/
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
 a {
   text-decoration: none;
   font-style: italic; }
 
 body {
-  font-family: Verdana, Arial, sans-serif;
+  font-family: "Tittilium Web", Verdana, Arial, sans-serif;
   color: #222222; }
+  @media only screen and (max-width: 740px) {
+    body {
+      font-size: 125%; } }
 
 h1, h2, h3, h4 {
-  font-family: "Palatino Linotype", Georgia, serif; }
+  font-family: "Alegreya Sans", "Palatino Linotype", Georgia, serif; }
 
 h1 {
   font-size: 30px;
@@ -18,7 +58,7 @@ h2 {
   color: #333; }
 
 p {
-  font-family: Verdana, Arial, sans-serif; }
+  font-family: "Tittilium Web", Verdana, Arial, sans-serif; }
 
 a {
   color: #f27731; }
@@ -30,7 +70,10 @@ a {
 
 #header {
   border-radius: 6px;
-  border: 1px solid #333;
+  border: 1px solid #000;
+  box-shadow: 2px 2px 40px #999, 1px 1px 3px #f27731;
+  -moz-box-shadow: 2px 2px 40px #999, 1px 1px 3px #f27731;
+  -webkit-box-shadow: 2px 2px 40px #999, 1px 1px 3px #f27731;
   height: 60px;
   background-color: #170a48; }
   #header #main-menu li {
@@ -39,8 +82,12 @@ a {
     color: white; }
 
 #main {
-  width: 90vw;
+  width: 960px;
   margin: 0 auto; }
+  @media only screen and (max-width: 960px) {
+    #main {
+      width: auto;
+      max-width: 960px; } }
 
 #footer {
   background-color: #ccf962;

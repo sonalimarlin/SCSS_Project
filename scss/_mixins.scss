@@ -1,3 +1,9 @@
+// mixin to include imported fonts
+@mixin google-font($font){
+	$font: unquote($font);
+	@import url(https://fonts.googleapis.com/css?family=#{$font});
+}
+
 @mixin warning {
   background-color: orange;
   color: #fff;
@@ -10,13 +16,14 @@
 	}
 }
 
-@mixin rounded {
-	border-radius: 6px;
+//mixins with arguments and defaults
+@mixin rounded ($radius: 6px) {
+	border-radius: $radius;
 }
 
-@mixin box {
-	@include rounded;
-	border: 1px solid #333;
+@mixin box($radius: 6px, $border: 1px solid #000) {
+	@include rounded($radius);
+	border: $border;
 }
 
 @mixin fancy-links {
@@ -24,4 +31,11 @@
 		text-decoration: none;
 		font-style: italic;
 	}
+}
+
+//using varArgs to leave num of arguments vague
+@mixin box-shadow($shadows...){
+	box-shadow: $shadows;
+	-moz-box-shadow: $shadows;
+	-webkit-box-shadow: $shadows;
 }

@@ -1,11 +1,55 @@
+/* Sublime Text with a bunch of setup as follows:
+Package manager plugin packagecontrol.io. view show console, then run code.
+ctrl shift p to check packages installed
+sass, scss, sass build, Emmet plugin
+
+sass is distributed as a ruby gem 
+rubyinstaller.org -> download
+add ruby executables to your path!
+cmd line
+gem install sass
+
+in sublime, create style.scss
+add some styles bgc tab (for emmet) plus nested scss
+ctrl b (tools build)
+pick sass
+
+setup project structure
+sass build plugin mapped to build to css folder
+tools build system -> new build system
+{
+
+  "cmd": ["sass", "--update", "$file:${file_path}/../css/${file_base_name}.css", "--stop-on-error", "--no-cache"],
+
+  "osx":
+  {
+      "path": "/usr/local/bin:$PATH"
+  },
+
+  "windows":
+  {
+      "shell": "true"
+  }
+
+}
+*/
+
 @import "variables";
 @import "mixins";
 
 @include fancy-links;
+//call mixin to include imported fonts
+@include google-font("Alegreya+Sans");
+@include google-font("Titillium+Web");
 
 body {
   font-family: $text-font;
   color: $text-color;
+//nested media queries!
+	@media only screen and (max-width: 740px){
+		font-size: 125%;
+	}
+
 }
 
 h1, h2, h3, h4 {
@@ -34,8 +78,10 @@ a {
   padding: 8px 12px;
 }
 
+//box-shadow uses varArgs to accept multiple variables being passed in
 #header {
 	@include box;
+	@include box-shadow (2px 2px 40px #999, 1px 1px 3px $secondary-color);
 	height: $header-height;
 	background-color: $theme-color;
 
@@ -55,6 +101,11 @@ a {
 
 #main {
 	width: $content-width;
+	@media only screen and (max-width: 960px) {
+		width: auto;
+		max-width: $content-width;
+
+	}
 	margin: 0 auto;
 
   #content {
