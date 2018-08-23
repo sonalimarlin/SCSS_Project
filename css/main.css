@@ -44,7 +44,7 @@ body {
   color: #222222; }
   @media only screen and (max-width: 740px) {
     body {
-      font-size: 125%; } }
+      font-size: 120%; } }
 
 h1, h2, h3, h4 {
   font-family: "Alegreya Sans", "Palatino Linotype", Georgia, serif; }
